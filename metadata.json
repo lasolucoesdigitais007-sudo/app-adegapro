@@ -1,0 +1,8 @@
+{
+  "name": "AdegaPro",
+  "description": "Sistema premium para gestão de adegas: controle de estoque, captação de clientes, campanhas de marketing, cupons de desconto e relatórios financeiros estratégicos.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

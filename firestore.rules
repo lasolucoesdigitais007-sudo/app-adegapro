@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper Functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    match /usuarios/{document} {
+      allow read, write: if isSignedIn();
+    }
+    
+    match /produtos/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /clientes/{document} {
+      allow read, update, delete: if isSignedIn();
+      allow create: if true;
+    }
+    
+    match /clientes_perfis/{document} {
+      allow read, write: if isSignedIn();
+    }
+    
+    match /promocoes/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+    
+    match /cupons/{document} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isSignedIn();
+    }
+    
+    match /campanhas/{document} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /pedidos/{document} {
+      allow read: if isSignedIn();
+      allow get: if true;
+      allow create: if true;
+      allow update, delete: if isSignedIn();
+    }
+
+    match /favoritos/{document} {
+      allow read, write: if isSignedIn();
+    }
+    
+    match /vendas/{document} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /configuracoes/{document} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+  }
+}

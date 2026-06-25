@@ -1,0 +1,157 @@
+{
+  "__instructions": "Defines the Firestore collections, schemas, and security rules definitions.",
+  "projectInfo": {
+    "projectId": "gen-lang-client-0647760479",
+    "description": "AdegaPro - Sistema de gestão"
+  },
+  "collections": [
+    {
+      "name": "usuarios",
+      "description": "App users/Admins",
+      "rules": "isLoggedIn",
+      "schema": {
+        "email": "string",
+        "role": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "produtos",
+      "description": "Inventory of products",
+      "rules": "isLoggedIn",
+      "schema": {
+        "name": "string",
+        "category": "string",
+        "brand": "string",
+        "description": "string",
+        "costPrice": "number",
+        "salePrice": "number",
+        "stock": "number",
+        "minStock": "number",
+        "image": "string",
+        "barcode": "string",
+        "status": "string",
+        "sku": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      }
+    },
+    {
+      "name": "clientes",
+      "description": "Clients base",
+      "rules": "isLoggedIn",
+      "schema": {
+        "name": "string",
+        "email": "string",
+        "phone": "string",
+        "whatsapp": "string",
+        "birthday": "string",
+        "city": "string",
+        "favoriteCategory": "string",
+        "totalSpent": "number",
+        "ordersCount": "number",
+        "registrationDate": "string",
+        "lastPurchaseDate": "string",
+        "status": "string",
+        "notes": "string",
+        "loyaltyPoints": "number",
+        "loyaltyTotalEarned": "number",
+        "loyaltyTotalRedeemed": "number",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "promocoes",
+      "description": "Active promotions",
+      "rules": "isLoggedIn",
+      "schema": {
+        "name": "string",
+        "productId": "string",
+        "productName": "string",
+        "discountPercentage": "number",
+        "description": "string",
+        "startDate": "string",
+        "endDate": "string",
+        "active": "boolean",
+        "views": "number",
+        "clicks": "number",
+        "couponsUsed": "number",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "cupons",
+      "description": "Discount coupons",
+      "rules": "isLoggedIn",
+      "schema": {
+        "code": "string",
+        "discountType": "string",
+        "discountValue": "number",
+        "minOrderValue": "number",
+        "expiryDate": "string",
+        "active": "boolean",
+        "usageLimit": "number",
+        "usageCount": "number",
+        "type": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "campanhas",
+      "description": "Marketing campaigns",
+      "rules": "isLoggedIn",
+      "schema": {
+        "title": "string",
+        "targetAudience": "string",
+        "channel": "string",
+        "message": "string",
+        "promotionId": "string",
+        "status": "string",
+        "sentCount": "number",
+        "deliveredCount": "number",
+        "clickedCount": "number",
+        "sentDate": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "pedidos",
+      "description": "Orders submitted by clients",
+      "rules": "isLoggedIn",
+      "schema": {
+        "clientId": "string",
+        "clientName": "string",
+        "clientPhone": "string",
+        "subtotal": "number",
+        "discount": "number",
+        "deliveryFee": "number",
+        "total": "number",
+        "status": "string",
+        "paymentMethod": "string",
+        "deliveryAddress": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "favoritos",
+      "description": "Client favorite products",
+      "rules": "isLoggedIn",
+      "schema": {
+        "clientId": "string",
+        "productId": "string"
+      }
+    },
+    {
+      "name": "clientes_perfis",
+      "description": "Customer profiles (delivery details and WhatsApp)",
+      "rules": "isOwner",
+      "schema": {
+        "name": "string",
+        "phone": "string",
+        "address": "string",
+        "city": "string",
+        "updatedAt": "timestamp"
+      }
+    }
+  ]
+}
